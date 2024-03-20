@@ -53,7 +53,7 @@ function App() {
       }
     }
     if (left > 0) {
-      noOfElectric += Math.floor(left / prices.at(-1).price);
+      noOfElectric += Math.floor(left / prices[prices.length - 1].price);
     }
 
     return noOfElectric;
