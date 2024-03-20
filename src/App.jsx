@@ -49,13 +49,13 @@ function App() {
         noOfElectric += prices[i].quantity;
         left = temp;
       } else {
-        noOfElectric += Math.floor(left / prices[i].price);
+        noOfElectric += left / prices[i].price;
         left = 0;
         break;
       }
     }
     if (left > 0) {
-      noOfElectric += Math.floor(left / prices[prices.length - 1].price);
+      noOfElectric += left / prices[prices.length - 1].price;
     }
 
     return noOfElectric;
@@ -97,13 +97,15 @@ function App() {
       ))}
       <div className="mt-6 flex items-center gap-3">
         <strong>Tổng số điện</strong>
-        <span className="font-bold text-red-500">{getNumberOfElectric()}</span>
+        <span className="font-bold text-red-500">
+          {getNumberOfElectric().toFixed(2)}
+        </span>
       </div>
       <div className="flex items-center gap-3">
         <strong>Đơn giá</strong>
         {getNumberOfElectric() ? (
           <span className="font-bold text-red-500">
-            {(money / getNumberOfElectric()).toFixed(0)} VND
+            {(money / getNumberOfElectric()).toFixed(2)} VND
           </span>
         ) : (
           <></>
