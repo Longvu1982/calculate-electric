@@ -43,13 +43,15 @@ function App() {
     let noOfElectric = 0;
     let left = money;
     for (let i = 0; i < prices.length - 1; i++) {
-      left = left - prices[i].quantity * prices[i].price;
+      const temp = left - prices[i].quantity * prices[i].price;
       console.log(left);
-      if (left > 0) {
+      if (temp > 0) {
         noOfElectric += prices[i].quantity;
+        left = temp;
       } else {
-        noOfElectric += Math.floor(money / prices[i].price);
+        noOfElectric += Math.floor(left / prices[i].price);
         left = 0;
+        break;
       }
     }
     if (left > 0) {
